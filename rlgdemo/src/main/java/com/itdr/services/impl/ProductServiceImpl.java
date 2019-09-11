@@ -1,5 +1,6 @@
 package com.itdr.services.impl;
 
+import com.itdr.common.ServerResponse;
 import com.itdr.mappers.ProductMapper;
 import com.itdr.pojo.Product;
 import com.itdr.services.ProductService;
@@ -16,22 +17,25 @@ public class ProductServiceImpl implements ProductService {
 
     //根据id查询商品
     @Override
-    public Product cxOne(Integer id) {
+    public ServerResponse cxOne(Integer id) {
         Product p = productMapper.cxOne(id);
-        return p;
+        ServerResponse sr = ServerResponse.successRS(200, p);
+        return sr;
     }
 
     //根据商品名模糊查询
     @Override
-    public List<Product> cxMore(String name) {
+    public ServerResponse cxMore(String name) {
         List<Product> p = productMapper.cxMore(name);
-        return p;
+        ServerResponse sr = ServerResponse.successRS(200, p);
+        return sr;
     }
 
     @Override
-    public int insert(Product record) {
+    public ServerResponse insert(Product record) {
         int i = productMapper.insert(record);
-        return i;
+        ServerResponse sr = ServerResponse.successRS(200, i);
+        return sr;
     }
 
 

@@ -109,12 +109,6 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Users">
         update neuedu_user
         <set>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
-            </if>
             <if test="email != null">
                 email = #{email,jdbcType=VARCHAR},
             </if>
@@ -127,15 +121,7 @@
             <if test="answer != null">
                 answer = #{answer,jdbcType=VARCHAR},
             </if>
-            <if test="role != null">
-                role = #{role,jdbcType=INTEGER},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updateTime != null">
-                update_time = #{updateTime,jdbcType=TIMESTAMP},
-            </if>
+            update_time = now(),
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -178,5 +164,46 @@
     <!--忘记密码-->
     <select id="forget" parameterType="string" resultType="string">
         select question from neuedu_user where username=#{username}
+    </select>
+
+    <!--根据用户名或者邮箱查询用户-->
+    <select id="check_valid" parameterType="map" resultType="java.lang.Integer">
+        select count(id) from neuedu_user
+        <where>
+            <if test="type =='username'">
+                username=#{str}
+            </if>
+            <if test="type =='email'">
+                email=#{str}
+            </if>
+        </where>
+    </select>
+
+    <!--忘记密码-->
+    <!--根据用户名查找用户密码问题-->
+    <select id="selectByUsername" parameterType="string" resultType="java.lang.String">
+        select question from neuedu_user where username=#{username}
+    </select>
+
+    <select id="selectByUsernameAndQuestionAndAnswer" parameterType="map" resultType="java.lang.Integer">
+        select count(id) from neuedu_user where username=#{username} and answer=#{answer}
+    </select>
+
+    <!--查询邮箱是否存在第二个-->
+    <select id="selectByEmailAndId" parameterType="map" resultType="java.lang.Integer">
+        select
+        count(id)
+        from neuedu_user where email = #{email} and id != #{id}
+    </select>
+
+
+    <update id="updateByUsernameAndPassword" parameterType="map">
+        update neuedu_user set password = #{password} , update_time=now()  where username=#{username}
+    </update>
+
+    <select id="selectByIdAndPassword" parameterType="map" resultType="java.lang.Integer">
+        select
+        count(id)
+        from neuedu_user where id=#{id} and password=#{passwordOld}
     </select>
 </mapper>

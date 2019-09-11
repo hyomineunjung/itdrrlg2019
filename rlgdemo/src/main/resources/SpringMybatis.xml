@@ -33,8 +33,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-
-
     <!--扫包形式配置代理-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.itdr.mappers"/>

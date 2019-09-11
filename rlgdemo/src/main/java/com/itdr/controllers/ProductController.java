@@ -1,5 +1,6 @@
 package com.itdr.controllers;
 
+import com.itdr.common.ServerResponse;
 import com.itdr.pojo.Product;
 import com.itdr.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +23,26 @@ public class ProductController {
     //通过商品id查询商品
     @RequestMapping("cxOne.do")
     @ResponseBody
-    public Product cxOne(Integer id, Model m){
-        Product p = productService.cxOne(id);
+    public ServerResponse cxOne(Integer id, Model m){
+        ServerResponse sr = productService.cxOne(id);
 //        System.out.println(p);
-        return p;
+        return sr;
     }
 
     //通过商品名模糊查询商品
     @RequestMapping("cxMore.do")
     @ResponseBody
-    public List<Product> cxMore(String name, Model m){
-        List<Product> p = productService.cxMore(name);
-        return p;
+    public ServerResponse cxMore(String name, Model m){
+        ServerResponse sr = productService.cxMore(name);
+        return sr;
     }
 
     //增加商品
     @RequestMapping("addOne.do")
     @ResponseBody
-    public Integer addOne(Product p, Model m){
-        Integer i= productService.insert(p);
-        return i;
+    public ServerResponse addOne(Product p, Model m){
+        ServerResponse sr = productService.insert(p);
+        return sr;
     }
 
     //
