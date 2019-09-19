@@ -139,6 +139,19 @@
       <artifactId>spring-webmvc</artifactId>
       <version>4.3.19.RELEASE</version>
     </dependency>
+    <!--guava缓存-->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>22.0</version>
+    </dependency>
+
+    <!--mybatis分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.1.10</version>
+    </dependency>
 
     <dependency>
       <groupId>org.mybatis</groupId>

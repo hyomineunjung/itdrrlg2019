@@ -8,6 +8,13 @@ public class Const {
     //    失败的状态码
     public static final int ERROR = 1;
 
+    public interface Cart{
+        String LimitQuantitySuccess="LIMIT_NUM_SUCCESS";
+        String LimitQuantityFaild="LIMIT_NUM_Faild";
+        Integer CHECK=1;
+        Integer UNCHECK=0;
+    }
+
     public enum UserEnum {
         NEED_LOGIN(2, "需要登录"),
         NO_LOGIN(101,"用户未登录");

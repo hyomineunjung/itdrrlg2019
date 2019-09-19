@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itdr.mappers.CartMapper" >
-  <resultMap id="BaseResultMap" type="com.itdr.pojo.Cart" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="product_id" property="productId" jdbcType="INTEGER" />
-    <result column="quantity" property="quantity" jdbcType="INTEGER" />
-    <result column="checked" property="checked" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.itdr.mappers.CartMapper">
+    <resultMap id="BaseResultMap" type="com.itdr.pojo.Cart">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="quantity" property="quantity" jdbcType="INTEGER"/>
+        <result column="checked" property="checked" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, user_id, product_id, quantity, checked, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from neuedu_cart
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from neuedu_cart
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from neuedu_cart
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.itdr.pojo.Cart" >
+    <insert id="insert" parameterType="com.itdr.pojo.Cart">
     insert into neuedu_cart (id, user_id, product_id, 
       quantity, checked, create_time, 
       update_time)
@@ -31,80 +31,80 @@
       #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.itdr.pojo.Cart" >
-    insert into neuedu_cart
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="productId != null" >
-        product_id,
-      </if>
-      <if test="quantity != null" >
-        quantity,
-      </if>
-      <if test="checked != null" >
-        checked,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="productId != null" >
-        #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="quantity != null" >
-        #{quantity,jdbcType=INTEGER},
-      </if>
-      <if test="checked != null" >
-        #{checked,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Cart" >
-    update neuedu_cart
-    <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="productId != null" >
-        product_id = #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="quantity != null" >
-        quantity = #{quantity,jdbcType=INTEGER},
-      </if>
-      <if test="checked != null" >
-        checked = #{checked,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.Cart" >
+    <insert id="insertSelective" parameterType="com.itdr.pojo.Cart">
+        insert into neuedu_cart
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="checked != null">
+                checked,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="checked != null">
+                #{checked,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Cart">
+        update neuedu_cart
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="checked != null">
+                checked = #{checked,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.Cart">
     update neuedu_cart
     set user_id = #{userId,jdbcType=INTEGER},
       product_id = #{productId,jdbcType=INTEGER},
@@ -114,4 +114,67 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <!--自己写的-->
+
+    <!--购物车list列表-->
+    <select id="cx" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from neuedu_cart where user_id = #{user_id}
+  </select>
+
+    <!--购物车添加商品-->
+    <insert id="add" parameterType="java.lang.Integer">
+        insert into neuedu_cart (id, user_id, product_id, quantity, checked, create_time, update_time)
+    values (null, #{user_id}, #{productId}, #{count}, 1, now(), now())
+    </insert>
+
+    <!--更新购物车某个产品数量-->
+    <update id="update" parameterType="java.lang.Integer">
+        update neuedu_cart set quantity =#{count},update_time=now() where user_id =#{user_id} and product_id=#{productId}
+    </update>
+
+    <!--购物车选中某个商品-->
+    <update id="select" parameterType="java.lang.Integer">
+        update neuedu_cart set checked=1,update_time=now() where user_id =#{user_id} and product_id=#{productId}
+    </update>
+
+    <!--移除购物车某个产品-->
+    <delete id="delete_product" parameterType="java.lang.Integer">
+        delete from neuedu_cart where product_id =#{productId} and user_id=#{user_id}
+    </delete>
+
+    <!--购物车选中某个商品-->
+    <update id="un_select" parameterType="java.lang.Integer">
+        update neuedu_cart set checked=0,update_time=now() where user_id =#{user_id} and product_id=#{productId}
+    </update>
+
+    <!--查询在购物车里的产品数量-->
+    <select id="get_cart_product_count" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select product_id from neuedu_cart where user_id=#{user_id}
+    </select>
+
+    <!--查询该用户购物车中是否包含该商品-->
+    <select id="cxs" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from neuedu_cart where user_id=#{user_id} and product_id=#{productId}
+    </select>
+    <!--根据用户id查询所有购物数据-->
+    <select id="selectByUid" parameterType="integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from neuedu_cart where user_id=#{user_id}
+    </select>
+
+
+    <select id="selectByUidCheck" parameterType="integer" resultType="integer">
+        select count(id) from neuedu_cart where user_id=#{uid} and checked=#{uc}
+    </select>
+
+    <!--改变购物车商品选中状态-->
+    <update id="select_all" parameterType="map">
+        update neuedu_cart set checked=#{check},update_time=now() where user_id =#{uid}
+        <if test="productId != null">
+            and product_id=#{productId}
+        </if>
+    </update>
 </mapper>

@@ -114,4 +114,14 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--递归-->
+  <select id="get_deep_category" parameterType="integer" resultMap="BaseResultMap">
+    select id  from neuedu_category where parent_id =#{parentId}
+  </select>
+
+  <!--获取产品分类-->
+  <select id="topcategory" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from neuedu_category where parent_id=#{sid}
+    </select>
 </mapper>
